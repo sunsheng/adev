@@ -3,28 +3,28 @@ MAINTAINER lysu <sulifx@gmail.com>
 
 RUN apt-get update && apt-get -y install \
   build-essential \
-    git \
-      python \
-        wget \
-          rsync \
-            xz-utils \
-              vim && \
-                apt-get clean && \
-                  rm -rf /var/lib/apt/lists/*
+  git \
+  python \
+  wget \
+  rsync \
+  xz-utils \
+  vim && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
 
 # Build and install CMake from source.
 WORKDIR /usr/src
 RUN git clone https://github.com/Kitware/CMake.git CMake && \
   cd CMake && \
-    git checkout v3.4.0
-    RUN mkdir CMake-build
-    WORKDIR /usr/src/CMake-build
-    RUN /usr/src/CMake/bootstrap \
-        --parallel=$(nproc) \
-            --prefix=/usr && \
-              make -j$(nproc) install && \
-                rm -rf *
-                WORKDIR /usr/src
+  git checkout v3.4.0
+RUN mkdir CMake-build
+WORKDIR /usr/src/CMake-build
+RUN /usr/src/CMake/bootstrap \
+    --parallel=$(nproc) \
+    --prefix=/usr && \
+  make -j$(nproc) install && \
+  rm -rf *
+WORKDIR /usr/src
 
 # Install LLVM, see http://llvm.org/docs/CMake.html
 RUN wget http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz
@@ -60,4 +60,4 @@ RUN ln -s /usr/local/lib/linux /usr/local/lib/clang/3.7.0/lib/linux
 
 WORKDIR /usr/src
 
-ENTRYPOINT[ "bash" ] 
+ENTRYPOINT[ "bash" ]
