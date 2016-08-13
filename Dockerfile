@@ -42,6 +42,8 @@ RUN apt-get update &&  apt-get install  -y \
     net-tools \
     doxygen \
     tmux \
+    cscope \
+    global \ 
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
