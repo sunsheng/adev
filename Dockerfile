@@ -41,6 +41,7 @@ RUN apt-get update &&  apt-get install  -y \
     valgrind \
     net-tools \
     doxygen \
+    tmux \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -54,6 +55,6 @@ ENV CC="ccache clang" CXX="ccache clang++"
 RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime
     && sh ~/.vim_runtime/install_basic_vimrc.sh
 
-RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh 
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
     && chsh -s /bin/zsh
