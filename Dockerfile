@@ -43,7 +43,8 @@ RUN apt-get update &&  apt-get install  -y \
     doxygen \
     tmux \
     cscope \
-    global \ 
+    global \
+    gdb \ 
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
