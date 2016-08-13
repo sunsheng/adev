@@ -44,7 +44,8 @@ RUN apt-get update &&  apt-get install  -y \
     tmux \
     cscope \
     global \
-    gdb \ 
+    gdb \
+    zsh \ 
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
