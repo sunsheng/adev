@@ -74,7 +74,7 @@ RUN git clone https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_n
 
 RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update --init --recursive && ./install.sh
 
-RUN wget -P ~/.vim_runtime/sources_non_forked/gtags.vim "https://raw.githubusercontent.com/vim-scripts/gtags.vim/master/plugin/gtags.vim"
+RUN git clone https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim
 
 ADD my_configs.vim ~/.vim_runtime/my_configs.vim
 ADD ycm_extra_conf.py ~/.ycm_extra_conf.py
