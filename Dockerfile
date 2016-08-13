@@ -76,5 +76,5 @@ RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update -
 
 RUN git clone https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim
 
-ADD my_configs.vim ~/.vim_runtime/my_configs.vim
-ADD ycm_extra_conf.py ~/.ycm_extra_conf.py
+ADD my_configs.vim /root/.vim_runtime/my_configs.vim
+ADD ycm_extra_conf.py /root/.ycm_extra_conf.py
