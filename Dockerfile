@@ -46,6 +46,17 @@ RUN apt-get update &&  apt-get install  -y \
     global \
     gdb \
     zsh \
+    xfonts-utils  \
+    locales \
+    ctags \
+    xdg-utils \
+    python-dev \
+    python-pip \
+    python-setuptools \
+    rubygems \
+    curl \
+    fontconfig \
+    ca-certificates \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
