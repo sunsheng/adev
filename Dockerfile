@@ -17,21 +17,6 @@ RUN apt-get update &&  apt-get install  -y \
     openmpi-bin \
     openmpi-common  \
     openssh-client \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
-RUN cd /tmp \
- && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
- && cd ccache-3.2.5 \
- && ./configure \
- && make \
- && make install \
- && cd \
- && rm -r /tmp/ccache-3.2.5
-
-ENV CCACHE_DIR=/ccache
-
-RUN apt-get update &&  apt-get install  -y \
     clang-3.7 \
     libomp-dev \
     vim \
@@ -59,6 +44,17 @@ RUN apt-get update &&  apt-get install  -y \
     ca-certificates \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+RUN cd /tmp \
+ && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
+ && cd ccache-3.2.5 \
+ && ./configure \
+ && make \
+ && make install \
+ && cd \
+ && rm -r /tmp/ccache-3.2.5
+
+ENV CCACHE_DIR=/ccache
 
 RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.7 999 \
  && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.7 999 \
