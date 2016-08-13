@@ -46,7 +46,6 @@ RUN apt-get update &&  apt-get install  -y \
     global \
     gdb \
     zsh \
-    ack \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -58,7 +57,7 @@ RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.7 99
 ENV CC="ccache clang" CXX="ccache clang++"
 
 RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime \
-    && sh ~/.vim_runtime/install_basic_vimrc.sh
+    && sh ~/.vim_runtime/install_awesome_vimrc.sh
 
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
