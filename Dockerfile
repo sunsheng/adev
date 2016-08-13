@@ -34,6 +34,13 @@ ENV CCACHE_DIR=/ccache
 RUN apt-get update &&  apt-get install  -y \
     clang-3.7 \
     libomp-dev \
+    vim \
+    emacs \
+    netcat \
+    unzip \
+    valgrind \
+    net-tools \
+    doxygen \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
