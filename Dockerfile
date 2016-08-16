@@ -18,6 +18,7 @@ RUN apt-get update &&  apt-get install  -y \
     openmpi-common  \
     openssh-client \
     clang-3.7 \
+    clang-format-3.7 \
     libomp-dev \
     vim \
     emacs \
@@ -76,6 +77,8 @@ RUN git clone https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_n
 RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer
 
 RUN git clone https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim
+
+RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sources_non_forked/vim-clang-format
 
 ADD my_configs.vim /root/.vim_runtime/my_configs.vim
 ADD ycm_extra_conf.py /root/.ycm_extra_conf.py

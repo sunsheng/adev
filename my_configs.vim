@@ -6,6 +6,13 @@ let GtagsCscope_Auto_Load = 1
 let CtagsCscope_Auto_Map = 1
 let GtagsCscope_Quiet = 1
 
+let g:clang_format#style_options = { 
+            \ "AccessModifierOffset" : -4, 
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C99"}
+let g:clang_format#auto_format=1
+
 set completeopt=longest,menu
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 inoremap <expr> <CR>    pumvisible()?"\<C-y>":"<CR>"
