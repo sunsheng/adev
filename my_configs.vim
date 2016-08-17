@@ -1,4 +1,5 @@
 colorscheme desert
+set number
 
 set cscopetag
 set cscopeprg='gtags-cscope'
@@ -10,7 +11,7 @@ let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4, 
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C99"}
+            \ "Standard" : "C++11"}
 let g:clang_format#auto_format=1
 
 set completeopt=longest,menu
