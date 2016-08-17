@@ -18,7 +18,7 @@ RUN apt-get update &&  apt-get install  -y \
     openmpi-common  \
     openssh-client \
     clang-3.7 \
-    clang-format-3.7 \
+    clang-format \
     libomp-dev \
     vim \
     emacs \
