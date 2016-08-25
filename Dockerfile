@@ -3,6 +3,7 @@ MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
 RUN apt-get update &&  apt-get install  -y \
+    man \
     build-essential \
     cmake \
     curl \
