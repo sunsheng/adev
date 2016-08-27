@@ -45,6 +45,7 @@ RUN apt-get update &&  apt-get install  -y \
     fontconfig \
     ca-certificates \
     pkg-config \
+    autoconf \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
