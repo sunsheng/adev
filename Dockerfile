@@ -47,7 +47,6 @@ RUN apt-get update &&  apt-get install  -y \
     pkg-config \
     autoconf \
     libxml2-dev \
-    libglib2.0-dev \ 
     gsl \
     sqlite3 \
     libcurl \
