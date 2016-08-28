@@ -46,6 +46,9 @@ RUN apt-get update &&  apt-get install  -y \
     ca-certificates \
     pkg-config \
     autoconf \
+    libxml2 \
+    libglib2.0-dev \ 
+    gsl \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
