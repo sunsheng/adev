@@ -49,6 +49,8 @@ RUN apt-get update &&  apt-get install  -y \
     libxml2 \
     libglib2.0-dev \ 
     gsl \
+    sqlite3 \
+    libcurl \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
