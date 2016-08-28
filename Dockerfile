@@ -46,10 +46,6 @@ RUN apt-get update &&  apt-get install  -y \
     ca-certificates \
     pkg-config \
     autoconf \
-    libglib2.0-dev \ 
-    gsl \
-    sqlite3 \
-    libcurl \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
