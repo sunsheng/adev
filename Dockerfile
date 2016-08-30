@@ -48,6 +48,8 @@ RUN apt-get update &&  apt-get install  -y \
     autoconf \
     libxml2-dev \
     libglib2.0-dev \ 
+    libgsl0-dev \
+    libcurl4-gnutls-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
