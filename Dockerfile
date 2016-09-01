@@ -50,6 +50,7 @@ RUN apt-get update &&  apt-get install  -y \
     libglib2.0-dev \ 
     libgsl0-dev \
     libcurl4-gnutls-dev \
+    ack-grep \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -88,3 +89,4 @@ RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sourc
 
 ADD my_configs.vim /root/.vim_runtime/my_configs.vim
 ADD ycm_extra_conf.py /root/.ycm_extra_conf.py
+ADD tmux.conf /root/.tmux.conf
