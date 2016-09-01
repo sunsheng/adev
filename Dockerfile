@@ -90,3 +90,4 @@ RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sourc
 ADD my_configs.vim /root/.vim_runtime/my_configs.vim
 ADD ycm_extra_conf.py /root/.ycm_extra_conf.py
 ADD tmux.conf /root/.tmux.conf
+ENV TERM=xterm-256color

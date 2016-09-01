@@ -1,4 +1,4 @@
-colorscheme desert
+set t_Co=256
 set number
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
