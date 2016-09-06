@@ -31,6 +31,11 @@
 import os
 import ycm_core
 
+def DirectoryOfThisScript():
+    return os.path.dirname(os.path.abspath(__file__))
+
+compilation_database_folder = DirectoryOfThisScript()
+
 # These are the compilation flags that will be used in case there's no
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
@@ -52,7 +57,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=gnu99',
+'-std=gnu89',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
