@@ -51,6 +51,7 @@ RUN apt-get update &&  apt-get install  -y \
     libgsl0-dev \
     libcurl4-gnutls-dev \
     ack-grep \
+    psmisc \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
