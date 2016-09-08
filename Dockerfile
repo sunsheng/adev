@@ -55,8 +55,6 @@ RUN apt-get update &&  apt-get install  -y \
     inetutils-ping \
     netstat \
     tcpdump \
-    xinetd \
-    telnetd \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
