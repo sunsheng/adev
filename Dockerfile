@@ -52,10 +52,8 @@ RUN apt-get update &&  apt-get install  -y \
     libcurl4-gnutls-dev \
     ack-grep \
     psmisc \
-    netstat \
     tcpdump \
-    xinetd \
-    telnetd \
+    iputils-ping \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
