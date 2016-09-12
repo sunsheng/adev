@@ -4,56 +4,57 @@ MAINTAINER lysu <sulifx@gmail.com>
 # OpenSSH is required to run MPI applications
 RUN yum update &&  yum install  -y \
     man \
-    build-essential \
     cmake \
-    curl \
     git \
-    libboost-dev \
-    libboost-filesystem-dev \
-    libboost-program-options-dev \
-    libboost-regex-dev \
-    libboost-system-dev \
-    libboost-thread-dev \
-    libopenmpi-dev \
-    openmpi-bin \
-    openmpi-common  \
-    openssh-client \
-    clang-3.7 \
-    clang-format \
-    libomp-dev \
+    clang \
     vim \
     emacs \
-    netcat \
     unzip \
     valgrind \
     net-tools \
     doxygen \
     tmux \
     cscope \
-    global \
+    make \
+    gcc \
     gdb \
     zsh \
-    xfonts-utils  \
-    locales \
     ctags \
     xdg-utils \
-    python-dev \
-    python-pip \
     python-setuptools \
     rubygems \
-    curl \
     fontconfig \
-    ca-certificates \
-    pkg-config \
-    autoconf \
-    libxml2-dev \
-    libglib2.0-dev \
-    libgsl0-dev \
-    libcurl4-gnutls-dev \
-    ack-grep \
     psmisc \
     tcpdump \
-    iputils-ping \
+    autoconf \
+#    iputils-ping \
+#    build-essential \
+#    curl \
+#    libboost-dev \
+#    libboost-filesystem-dev \
+#    libboost-program-options-dev \
+#    libboost-regex-dev \
+#    libboost-system-dev \
+#    libboost-thread-dev \
+#    libopenmpi-dev \
+#    openmpi-bin \
+#    openmpi-common  \
+#    openssh-client \
+#    clang-format \
+#    libomp-dev \
+#    netcat \
+#    global \
+#    xfonts-utils  \
+#    locales \
+#    python-dev \
+#    python-pip \
+#    ca-certificates \
+#    pkg-config \
+#    libxml2-dev \
+#    libglib2.0-dev \
+#    libgsl0-dev \
+#    libcurl4-gnutls-dev \
+#    ack-grep \
  && yum all
 
 RUN cd /tmp \
@@ -67,10 +68,10 @@ RUN cd /tmp \
 
 ENV CCACHE_DIR=/ccache
 
-RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.7 999 \
- && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.7 999 \
- && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang-3.7 999 \
- && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.7 999
+RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang 999 \
+ && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++ 999 \
+ && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang 999 \
+ && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 999
 
 ENV CC="ccache clang" CXX="ccache clang++"
 
