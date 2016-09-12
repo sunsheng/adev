@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
-RUN yum update &&  apt-get yum  -y \
+RUN yum update &&  yum install  -y \
     man \
     build-essential \
     cmake \
