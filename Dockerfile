@@ -1,8 +1,8 @@
-FROM ubuntu:16.04
+FROM centos:7
 MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
-RUN apt-get update &&  apt-get install  -y \
+RUN yum update &&  apt-get yum  -y \
     man \
     build-essential \
     cmake \
@@ -47,15 +47,14 @@ RUN apt-get update &&  apt-get install  -y \
     pkg-config \
     autoconf \
     libxml2-dev \
-    libglib2.0-dev \ 
+    libglib2.0-dev \
     libgsl0-dev \
     libcurl4-gnutls-dev \
     ack-grep \
     psmisc \
     tcpdump \
     iputils-ping \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+ && yum all
 
 RUN cd /tmp \
  && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
