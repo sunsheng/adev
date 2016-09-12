@@ -2,7 +2,8 @@ FROM centos:7
 MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
-RUN yum update &&  yum install  -y \
+RUN yum update &&  yum install -y epel-release
+RUN yum install -y \
     man \
     cmake \
     git \
@@ -17,6 +18,8 @@ RUN yum update &&  yum install  -y \
     cscope \
     make \
     gcc \
+    gcc-c++ \
+    openssl-devel \
     gdb \
     zsh \
     ctags \
@@ -27,35 +30,16 @@ RUN yum update &&  yum install  -y \
     psmisc \
     tcpdump \
     autoconf \
-#    iputils-ping \
-#    build-essential \
-#    curl \
-#    libboost-dev \
-#    libboost-filesystem-dev \
-#    libboost-program-options-dev \
-#    libboost-regex-dev \
-#    libboost-system-dev \
-#    libboost-thread-dev \
-#    libopenmpi-dev \
-#    openmpi-bin \
-#    openmpi-common  \
-#    openssh-client \
-#    clang-format \
-#    libomp-dev \
-#    netcat \
-#    global \
-#    xfonts-utils  \
-#    locales \
-#    python-dev \
-#    python-pip \
-#    ca-certificates \
-#    pkg-config \
-#    libxml2-dev \
-#    libglib2.0-dev \
-#    libgsl0-dev \
-#    libcurl4-gnutls-dev \
-#    ack-grep \
- && yum all
+    boost-devel \
+    openmpi-devel \
+    python-devel \
+    libxml2-devel \
+    glib2-devel \
+    gsl-devel \
+    curl-devel \
+    python-pip \
+    ack \
+ && yum clean all
 
 RUN cd /tmp \
  && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
