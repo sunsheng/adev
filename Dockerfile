@@ -46,7 +46,6 @@ RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang 999 \
  && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang 999 \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 999
 
-ENV CC="clang" CXX="clang++"
 
 RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime \
     && sh ~/.vim_runtime/install_awesome_vimrc.sh
@@ -59,7 +58,7 @@ RUN git clone https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_n
 
 RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer
 
-RUN git clone https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim
+ENV CC="clang" CXX="clang++"
 
 RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sources_non_forked/vim-clang-format
 
