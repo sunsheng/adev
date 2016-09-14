@@ -41,10 +41,23 @@ RUN yum install -y \
     ack \
  && yum clean all
 
-RUN update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang 999 \
- && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 999
+RUN cd /tmp \
+  && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
+  && cd ccache-3.2.5 \
+  && ./configure \
+  && make \
+  && make install \
+  && cd \
+  && rm -r /tmp/ccache-3.2.5
 
-ENV CC="clang" CXX="clang++"
+ENV CCACHE_DIR=/ccache
+
+RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.7 999 \
+ && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.7 999 \
+ && update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang-3.7 999 \
+ && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-3.7 999
+
+ENV CC="ccache clang" CXX="ccache clang++"
 
 RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime \
     && sh ~/.vim_runtime/install_awesome_vimrc.sh
