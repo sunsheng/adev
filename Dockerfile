@@ -39,6 +39,12 @@ RUN yum install -y \
     curl-devel \
     python-pip \
     ack \
+    pcre \
+    pcre-devel \
+    zlib \
+    zlib-devel \
+    openssl \
+    openssl-devel \
  && yum clean all
 
 RUN cd /tmp \
