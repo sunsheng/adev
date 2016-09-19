@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:6
 MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
@@ -39,12 +39,6 @@ RUN yum install -y \
     curl-devel \
     python-pip \
     ack \
-    pcre \
-    pcre-devel \
-    zlib \
-    zlib-devel \
-    openssl \
-    openssl-devel \
  && yum clean all
 
 RUN cd /tmp \
