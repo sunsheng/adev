@@ -1,6 +1,8 @@
 FROM centos:7
 MAINTAINER lysu <sulifx@gmail.com>
 
+RUN yum install -y initscripts kernel-firmware grubby
+
 RUN rpm -ivh http://mirror.centos.org/centos/6/centosplus/x86_64/Packages/kernel-2.6.32-642.6.1.el6.centos.plus.x86_64.rpm --force
 
 RUN rpm -i http://mirror.centos.org/centos/6/centosplus/x86_64/Packages/kernel-devel-2.6.32-642.6.1.el6.centos.plus.x86_64.rpm --force
