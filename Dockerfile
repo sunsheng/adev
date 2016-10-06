@@ -1,8 +1,7 @@
 FROM centos:6.8
 MAINTAINER lysu <sulifx@gmail.com>
 
-# OpenSSH is required to run MPI applications
-RUN yum update &&  yum install -y epel-release
+RUN yum update
 RUN yum install -y \
     man \
     cmake \
@@ -39,8 +38,6 @@ RUN yum install -y \
     curl-devel \
     python-pip \
     ack \
-    kernel \
-    kernel-devel \
  && yum clean all
 
 RUN cd /tmp \
