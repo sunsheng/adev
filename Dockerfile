@@ -55,7 +55,6 @@ ENV CCACHE_DIR=/ccache
 RUN update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang 999 \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 999
 
-ENV CC="ccache clang" CXX="ccache clang++"
 
 RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime \
     && sh ~/.vim_runtime/install_awesome_vimrc.sh
@@ -67,6 +66,11 @@ RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
 RUN git clone https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_non_forked/YouCompleteMe
 
 RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer
+
+RUN update-alternatives --install /usr/bin/cc  cc  /usr/bin/clang 999 \
+    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++ 999
+
+ENV CC="ccache clang" CXX="ccache clang++"
 
 RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sources_non_forked/vim-clang-format
 
