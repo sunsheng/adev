@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:6.8
 MAINTAINER lysu <sulifx@gmail.com>
 
 # OpenSSH is required to run MPI applications
