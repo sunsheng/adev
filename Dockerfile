@@ -39,6 +39,8 @@ RUN yum install -y \
     curl-devel \
     python-pip \
     ack \
+    kernel \
+    kernel-devel \
  && yum clean all
 
 RUN cd /tmp \
