@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER lysu <sulifx@gmail.com>
 
+ADD sources.list /etc/apt/sources.list
 RUN apt-get update &&  apt-get install  -y \
     man \
     build-essential \
