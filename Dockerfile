@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
 MAINTAINER lysu <sulifx@gmail.com>
 
 RUN apt-get update &&  apt-get install  -y \
@@ -36,9 +36,9 @@ RUN apt-get update &&  apt-get install  -y \
     locales \
     ctags \
     xdg-utils \
-    python-dev \
-    python-pip \
-    python-setuptools \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
     rubygems \
     curl \
     fontconfig \
