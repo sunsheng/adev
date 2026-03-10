@@ -1,7 +1,10 @@
 FROM ubuntu:latest
-MAINTAINER lysu <sulifx@gmail.com>
+LABEL maintainer="lysu <sulifx@gmail.com>"
+
+COPY sources.list /etc/apt/sources.list
 
 RUN apt-get update &&  apt-get install  -y \
+    --no-install-recommends \
     man \
     build-essential \
     cmake \
@@ -40,7 +43,6 @@ RUN apt-get update &&  apt-get install  -y \
     python3-pip \
     python3-setuptools \
     rubygems \
-    curl \
     fontconfig \
     ca-certificates \
     pkg-config \
@@ -53,7 +55,8 @@ RUN apt-get update &&  apt-get install  -y \
     psmisc \
     tcpdump \
     iputils-ping \
- && apt-get clean
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN cd /tmp \
  && curl https://www.samba.org/ftp/ccache/ccache-3.2.5.tar.xz | tar xJ \
@@ -73,25 +76,19 @@ RUN update-alternatives --install /usr/bin/clang   clang   /usr/bin/clang-3.7 99
 
 ENV CC="ccache clang" CXX="ccache clang++"
 
-RUN git clone git://github.com/amix/vimrc.git ~/.vim_runtime \
-    && sh ~/.vim_runtime/install_awesome_vimrc.sh
-
-RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh \
+RUN git clone --depth 1 https://github.com/amix/vimrc.git ~/.vim_runtime \
+    && sh ~/.vim_runtime/install_awesome_vimrc.sh \
+    && git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh \
     && cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc \
-    && chsh -s /bin/zsh
+    && chsh -s /bin/zsh \
+    && git clone --depth 1 https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_non_forked/YouCompleteMe \
+    && cd ~/.vim_runtime/sources_non_forked/YouCompleteMe \
+    && git submodule update --init --recursive \
+    && ./install.sh --clang-completer \
+    && git clone --depth 1 https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim \
+    && git clone --depth 1 https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sources_non_forked/vim-clang-format
 
-RUN git clone https://github.com/Valloric/YouCompleteMe ~/.vim_runtime/sources_non_forked/YouCompleteMe
-
-RUN cd ~/.vim_runtime/sources_non_forked/YouCompleteMe && git submodule update --init --recursive && ./install.sh --clang-completer
-
-RUN git clone https://github.com/vim-scripts/gtags.vim.git ~/.vim_runtime/sources_non_forked/gtags.vim
-
-RUN git clone https://github.com/rhysd/vim-clang-format.git ~/.vim_runtime/sources_non_forked/vim-clang-format
-
-ADD my_configs.vim /root/.vim_runtime/my_configs.vim
-ADD ycm_extra_conf.py /root/.ycm_extra_conf.py
-ADD tmux.conf /root/.tmux.conf
+COPY my_configs.vim /root/.vim_runtime/my_configs.vim
+COPY ycm_extra_conf.py /root/.ycm_extra_conf.py
+COPY tmux.conf /root/.tmux.conf
 ENV TERM=xterm-256color
-
-ADD sources.list /etc/apt/sources.list
-RUN apt-get update
